@@ -1,0 +1,235 @@
+/* --------------------------------------------------------------
+   1. GLOBAL & WRAPPER
+   -------------------------------------------------------------- */
+   body {
+  background-color: #f6f8fb;
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.role-wrapper {
+  position: relative;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f6f8f9, #e9f2f1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 20px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  overflow: hidden;
+}
+
+/* --------------------------------------------------------------
+   2. BUBBLE BACKGROUND (soft neutral tones)
+   -------------------------------------------------------------- */
+.bubble-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bubble {
+  position: absolute;
+  bottom: -120px;
+  border-radius: 50%;
+  opacity: 0.25;
+  animation: rise 18s infinite ease-in-out;
+}
+
+.bubble1 { width: 70px; height: 70px; left: 8%;  background: #b8c7c3; animation-delay: 0s; }
+.bubble2 { width: 55px; height: 55px; left: 25%; background: #a6b8b3; animation-delay: 2.5s; }
+.bubble3 { width: 85px; height: 85px; left: 45%; background: #9bb0aa; animation-delay: 1s; }
+.bubble4 { width: 45px; height: 45px; left: 65%; background: #c9d7d4; animation-delay: 4s; }
+.bubble5 { width: 65px; height: 65px; left: 82%; background: #d7e4e1; animation-delay: 3s; }
+.bubble6 { width: 50px; height: 50px; left: 15%; background: #a0b9b4; animation-delay: 5.5s; }
+.bubble7 { width: 75px; height: 75px; left: 55%; background: #c1d4cf; animation-delay: 2s; }
+
+@keyframes rise {
+  0%   { transform: translateY(0) rotate(0deg) scale(1);   opacity: 0.25; }
+  50%  { transform: translateY(-350px) rotate(10deg) scale(1.3); opacity: 0.6; }
+  100% { transform: translateY(-800px) rotate(-10deg) scale(0.8); opacity: 0; }
+}
+
+/* --------------------------------------------------------------
+   3. CARD (formal glass style)
+   -------------------------------------------------------------- */
+.role-card {
+  position: relative;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 48px 36px;
+  border-radius: 20px;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  max-width: 460px;
+  width: 100%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.role-card.mounted {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.role-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.12);
+}
+
+/* --------------------------------------------------------------
+   4. LOGO & TEXT
+   -------------------------------------------------------------- */
+.logo-title { margin-bottom: 20px; }
+.logo-img { width: 120px; height: auto; }
+
+h2 {
+  color: #1f3b38;
+  font-size: 24px;
+  margin-bottom: 6px;
+  font-weight: 700;
+}
+
+.subtext {
+  font-size: 15px;
+  color: #555;
+  margin-bottom: 32px;
+}
+
+/* --------------------------------------------------------------
+   5. ROLE BOXES (formal look)
+   -------------------------------------------------------------- */
+.role-options {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+}
+
+.role-box {
+  position: relative;
+  width: 130px;
+  background: #f9fbfb;
+  border: 1.5px solid #d5e0de;
+  border-radius: 16px;
+  padding: 24px 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.role-box img {
+  width: 56px;
+  height: 56px;
+  margin-bottom: 12px;
+}
+
+.role-box h3 {
+  font-size: 16px;
+  color: #1f3b38;
+  font-weight: 600;
+}
+
+/* Fade-in effect */
+.appear-0 { animation: fadeUp 0.6s 0.15s forwards; }
+.appear-1 { animation: fadeUp 0.6s 0.30s forwards; }
+.appear-2 { animation: fadeUp 0.6s 0.45s forwards; }
+
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Hover */
+.role-box:hover {
+  transform: translateY(-6px);
+  border-color: #6ea89b;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+}
+
+/* Selected */
+.role-box.selected {
+  background: linear-gradient(135deg, #2f6058, #3d7d70);
+  color: #fff;
+  border-color: #2f6058;
+  box-shadow: 0 10px 26px rgba(47, 96, 88, 0.3);
+  transform: scale(1.05);
+}
+
+.role-box.selected h3 { color: #fff; }
+
+/* Check-mark */
+.role-box .check {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 24px;
+  height: 24px;
+  color: #fff;
+  animation: pop 0.3s ease-out;
+}
+
+@keyframes pop {
+  0% { transform: scale(0); }
+  70% { transform: scale(1.3); }
+  100% { transform: scale(1); }
+}
+
+/* --------------------------------------------------------------
+   6. CONTINUE BUTTON (formal teal theme)
+   -------------------------------------------------------------- */
+.btn-continue {
+  position: relative;
+  overflow: hidden;
+  padding: 14px;
+  width: 100%;
+  font-weight: 700;
+  font-size: 17px;
+  border-radius: 10px;
+  border: none;
+  background: linear-gradient(135deg, #2f6058, #3b7c70);
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+  box-shadow: 0 6px 18px rgba(47, 96, 88, 0.3);
+}
+
+.btn-continue:hover {
+  background: linear-gradient(135deg, #264d47, #366b60);
+  transform: translateY(-2px);
+}
+
+.btn-continue .ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  transform: scale(0);
+  animation: ripple 0.6s linear;
+  pointer-events: none;
+}
+
+@keyframes ripple {
+  to { transform: scale(4); opacity: 0; }
+}
+
+/* --------------------------------------------------------------
+   7. RESPONSIVE
+   -------------------------------------------------------------- */
+@media (max-width: 560px) {
+  .role-card { padding: 36px 24px; }
+  .role-options { gap: 14px; }
+  .role-box { width: 110px; padding: 18px 8px; }
+  .role-box img { width: 48px; height: 48px; }
+}
+
+@media (max-width: 380px) {
+  .role-box { width: 100%; max-width: 260px; }
+}

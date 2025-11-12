@@ -1,0 +1,253 @@
+/* Wrapper & background */
+.subscription-wrapper {
+  position: relative;
+  min-height: 100vh;
+  padding: 60px 20px 80px;
+  background: linear-gradient(135deg, #e0f2f1, #80cbc4);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow-x: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* Side bubbles container */
+.side-bubbles {
+  position: fixed;
+  top: 20%;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  z-index: 0;
+}
+
+.side-bubbles.left {
+  left: 10px;
+  align-items: center;
+}
+
+.side-bubbles.right {
+  right: 10px;
+  align-items: center;
+}
+
+/* Bubbles styling */
+.bubble {
+  border-radius: 50%;
+  background: rgba(38, 75, 72, 0.3);
+  filter: blur(12px);
+  animation: floatUpDown 6s ease-in-out infinite alternate;
+  opacity: 0.6;
+  box-shadow: 0 0 15px rgba(38, 75, 72, 0.4);
+}
+
+/* Bubble sizes */
+.bubble.small {
+  width: 30px;
+  height: 30px;
+  animation-duration: 7s;
+}
+
+.bubble.medium {
+  width: 50px;
+  height: 50px;
+  animation-duration: 6s;
+}
+
+.bubble.large {
+  width: 70px;
+  height: 70px;
+  animation-duration: 8s;
+}
+
+@keyframes floatUpDown {
+  0% {
+    transform: translateY(0);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-30px);
+    opacity: 0.9;
+  }
+}
+
+/* Main subscription container */
+.subscription-container {
+  background: #ffffffdd;
+  border-radius: 24px;
+  padding: 40px 40px 60px;
+  max-width: 960px; /* wider container */
+  width: 100%;
+  box-shadow: 0 20px 40px rgba(38, 75, 72, 0.25);
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+/* Header & intro */
+.subscription-container h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #264b48;
+  margin-bottom: 12px;
+}
+
+.intro-text {
+  font-size: 1.1rem;
+  color: #40514e;
+  max-width: 700px;
+  margin: 0 auto 40px;
+  line-height: 1.5;
+}
+
+/* Plans container - flex row with 3 items */
+.plans {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  flex-wrap: nowrap; /* keep all in one row */
+}
+
+/* Individual plan cards */
+.plan-card {
+  background: white;
+  border-radius: 20px;
+  padding: 28px 24px 36px;
+  width: 300px; /* fixed width so all 3 fit in one row */
+  box-shadow: 0 12px 20px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+  z-index: 1;
+}
+
+.plan-card:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 24px 40px rgba(38, 75, 72, 0.3);
+}
+
+/* Highlighted plan */
+.plan-card.highlight {
+  background: #2e5c58;
+  color: white;
+  box-shadow: 0 24px 45px rgba(46, 92, 88, 0.5);
+}
+
+.plan-card.highlight:hover {
+  transform: translateY(-12px) scale(1.08);
+  box-shadow: 0 30px 55px rgba(46, 92, 88, 0.6);
+}
+
+/* Plan titles */
+.plan-card h3 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+/* Price */
+.price {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 22px;
+  color: #264b48;
+}
+
+.plan-card.highlight .price {
+  color: #a9d8d3;
+}
+
+.price span {
+  font-weight: 400;
+  font-size: 1.1rem;
+  color: #777;
+  margin-left: 5px;
+}
+
+/* Feature list */
+.plan-card ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 30px;
+  width: 100%;
+  color: #40514e;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.plan-card.highlight ul {
+  color: #d0e8e6;
+}
+
+.plan-card ul li {
+  margin-bottom: 12px;
+  padding-left: 20px;
+  position: relative;
+}
+
+.plan-card ul li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #2e5c58;
+  font-weight: bold;
+}
+
+.plan-card.highlight ul li::before {
+  color: #a9d8d3;
+}
+
+/* Buttons */
+.btn-select {
+  background: #2e5c58;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 30px;
+  font-weight: 700;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  width: 100%;
+  font-size: 1.05rem;
+  user-select: none;
+}
+
+.plan-card.highlight .btn-select {
+  background: #1e413f;
+}
+
+.btn-select:hover {
+  background: #1e413f;
+}
+
+/* Responsive */
+@media (max-width: 990px) {
+  .plans {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .plan-card {
+    width: 45%;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .plan-card {
+    width: 90%;
+  }
+  .subscription-container {
+    padding: 30px 20px 40px;
+  }
+  .subscription-container h1 {
+    font-size: 2rem;
+  }
+  .intro-text {
+    font-size: 1rem;
+    max-width: 100%;
+  }
+}

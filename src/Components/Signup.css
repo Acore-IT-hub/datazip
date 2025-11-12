@@ -1,0 +1,125 @@
+.signup-wrapper {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #c0e5e2, #a6d3cf);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  position: relative;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow: hidden;
+}
+
+/* Bubble Background */
+.bubble-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0; left: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.bubble {
+  position: absolute;
+  bottom: -100px;
+  border-radius: 50%;
+  opacity: 0.4;
+  animation: rise 15s infinite ease-in;
+}
+
+.bubble1 { width: 60px; height: 60px; left: 10%; background: #264B48; animation-delay: 0s; }
+.bubble2 { width: 50px; height: 50px; left: 30%; background: #2E5C58; animation-delay: 3s; }
+.bubble3 { width: 70px; height: 70px; left: 50%; background: #A1C6C5; animation-delay: 1.5s; }
+.bubble4 { width: 40px; height: 40px; left: 70%; background: #7CA7A5; animation-delay: 4s; }
+.bubble5 { width: 55px; height: 55px; left: 85%; background: #C2D7D6; animation-delay: 2s; }
+
+@keyframes rise {
+  0%   { transform: translateY(0) scale(1); opacity: 0.4; }
+  50%  { transform: translateY(-300px) scale(1.2); opacity: 0.8; }
+  100% { transform: translateY(-600px) scale(0.9); opacity: 0; }
+}
+
+/* Signup Box */
+.signup-box {
+  background: #fefefe;
+  padding: 35px 30px;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 700px;
+  z-index: 1;
+}
+
+.signup-box h2 {
+  text-align: center;
+  color: #264B48;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.signup-subtext {
+  text-align: center;
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+/* Form Layout */
+.signup-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.form-group {
+  flex: 1 1 calc(50% - 10px);
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group.full {
+  flex: 1 1 100%;
+}
+
+.form-group label {
+  font-weight: 600;
+  color: #444;
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 10px;
+  border: 1.5px solid #ccc;
+  border-radius: 10px;
+  font-size: 15px;
+  outline: none;
+  background: #fff;
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: #2E5C58;
+  box-shadow: 0 0 6px rgba(46, 92, 88, 0.2);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 60px;
+}
+
+/* Button */
+.btn-submit {
+  padding: 12px;
+  font-weight: 700;
+  font-size
+}
